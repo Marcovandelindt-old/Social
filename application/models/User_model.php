@@ -29,6 +29,8 @@ class User_model extends CI_Model
 			'user_name'		=> $username,
 			'email'			=> $email,
 			'password'		=> $this->hash_password($password),
+			'ip_address'	=> $_SERVER['REMOTE_ADDR'],
+			'user_agent'	=> $_SERVER['HTTP_USER_AGENT'],
 			'created_at'	=> date('Y-m-d H:i:s'),
 		];	
 
