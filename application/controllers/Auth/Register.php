@@ -69,7 +69,7 @@ class Register extends CI_Controller
 
 				// Load the view
 				$this->load->view('partials/header', $data);
-				$this->load->view('auth/regsiter_success', $data);
+				$this->load->view('auth/login', $data);
 				$this->load->view('partials/footer', $data);
 
 			} else {

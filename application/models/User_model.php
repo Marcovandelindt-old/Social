@@ -39,6 +39,67 @@ class User_model extends CI_Model
 	}
 
 	/**
+	 * Check if the email exists in the database
+	 *
+	 * @param str $email
+	 * @return bool
+	 */
+	public function checkEmail($email)
+	{
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email', $email);
+
+		return $this->db->get()->row('email');
+	}
+
+	/**
+	 * Get the user
+	 *
+	 * @param str $email
+	 * @param str $password
+	 *
+	 * @return bool
+	 */
+	public function verifyPassword($email, $password)
+	{
+		$this->db->select('password');
+		$this->db->from('users');
+		$this->db->where('email', $email);
+		$hashed_password = $this->db->get()->row('password');
+
+		return $this->verifyPasswordHash($password, $hashed_password);
+	}
+
+	/**
+	 * Get the user id
+	 *
+	 * @param str $email
+	 * @return int user_id
+	 */
+	public function getUserIdByEmail($email)
+	{
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('email', $email);
+
+		return $this->db->get()->row('user_id');
+	}
+
+	/**
+	 * Get the full user
+	 *
+	 * @param int $user_id
+	 * @return user
+	 */
+	public function getUser($user_id)
+	{
+		$this->db->from('users');
+		$this->db->where('user_id', $user_id);
+		return $this->db->get()->row();
+	}
+
+	/**
 	 * hash_password function.
 	 * 
 	 * @access private
@@ -59,7 +120,7 @@ class User_model extends CI_Model
 	 * @param mixed $hash
 	 * @return bool
 	 */
-	private function verify_password_hash($password, $hash) {
+	private function verifyPasswordHash($password, $hash) {
 		
 		return password_verify($password, $hash);
 		
