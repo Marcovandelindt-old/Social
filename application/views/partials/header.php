@@ -40,16 +40,16 @@
 							<a class="nav-link" href="<?= base_url() ?>">Home</a>
 						</li>
 						<li class="nav-item <?= ( $pageName == 'mentions' ? 'active' : '' ) ?>">
-							<a class="nav-link" href="<?= base_url() ?>/mentions">Mentions</a>
+							<a class="nav-link" href="<?= base_url('mentions') ?>">Mentions</a>
 						</li>
 						<li class="nav-item <?= ( $pageName == 'messages' ? 'active' : '' ) ?>">
-							<a class="nav-link" href="<?= base_url() ?>/messages">Messages</a>
+							<a class="nav-link" href="<?= base_url('messages') ?>">Messages</a>
 						</li>
 						<li class="nav-item <?= ( $pageName == 'friends' ? 'active' : '' ) ?>">
-							<a class="nav-link" href="<?= base_url() ?>/friends">Friends</a>
+							<a class="nav-link" href="<?= base_url('friends') ?>">Friends</a>
 						</li>
 						<li class="nav-item <?= ( $pageName == 'profile' ? 'active' : '' ) ?>">
-							<a class="nav-link" href="<?= base_url() ?>/profile">My Profile</a>
+							<a class="nav-link" href="<?= base_url('profile') ?>">My Profile</a>
 						</li>
 					</ul>
 				</div>
