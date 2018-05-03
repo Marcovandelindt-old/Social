@@ -29,6 +29,12 @@ class Login extends CI_Controller
 	 */
 	public function index()
 	{
+
+		// First, check if user session is already set
+		if ( $this->session->has_userdata('user') ) {
+			redirect(base_url('home'));
+		}
+
 		$data 			= new stdClass();
 		$data->pageName = 'login';
 
@@ -75,10 +81,10 @@ class Login extends CI_Controller
 								'updated_at'	=> $user->updated_at
 							];
 
-							$this->session->set_userdata($userdata);
+							$this->session->set_userdata('user', $userdata);
 
 							// Redirect to home
-							redirect(base_url() . '/home');
+							redirect(base_url('home'));
 
 						} else {
 
