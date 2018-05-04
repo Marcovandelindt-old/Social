@@ -9,6 +9,7 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->library('session');
 	}
 
 	/**
@@ -16,6 +17,11 @@ class Home extends CI_Controller
 	 */
 	public function index ($sPageName = 'home')
 	{
+		// Check if the user is logged in
+		if ( !$this->session->has_userdata('user') ) {
+			redirect(base_url('login'));
+		}
+
 		$data['pageName'] = 'home';
 
 		$this->load->view('partials/header', $data);
