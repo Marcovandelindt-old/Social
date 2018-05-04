@@ -30,6 +30,11 @@ class Register extends CI_Controller
 	 */
 	public function index()
 	{
+		// Check if user is logged in
+		if ( $this->session->has_userdata('user') ) {
+			redirect(base_url('home'));
+		}
+
 		// Create new data object
 		$data 			= new stdClass();
 		$data->pageName = 'register';
