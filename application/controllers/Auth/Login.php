@@ -83,6 +83,9 @@ class Login extends CI_Controller
 
 							$this->session->set_userdata('user', $userdata);
 
+							// Update the login count
+							$this->user_model->updateLoginCount($user_id);
+
 							// Redirect to home
 							redirect(base_url('home'));
 

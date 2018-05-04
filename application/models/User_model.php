@@ -106,10 +106,9 @@ class User_model extends CI_Model
 	 * @param mixed $password
 	 * @return string|bool could be a string on success, or bool false on failure
 	 */
-	private function hash_password($password) {
-		
-		return password_hash($password, PASSWORD_BCRYPT);
-		
+	private function hash_password($password) 
+	{	
+		return password_hash($password, PASSWORD_BCRYPT);	
 	}
 	
 	/**
@@ -120,9 +119,20 @@ class User_model extends CI_Model
 	 * @param mixed $hash
 	 * @return bool
 	 */
-	private function verifyPasswordHash($password, $hash) {
-		
-		return password_verify($password, $hash);
-		
+	private function verifyPasswordHash($password, $hash) 
+	{	
+		return password_verify($password, $hash);	
+	}
+
+	/**
+	 * Update the login count
+	 *
+	 * @param int $user_id
+	 */
+	public function updateLoginCount($user_id)
+	{
+		$this->db->set('login_count', '`login_count`+1', FALSE);
+		$this->db->where('user_id', $user_id);	
+		$this->db->update('users');
 	}
 }
