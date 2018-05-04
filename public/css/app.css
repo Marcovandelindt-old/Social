@@ -61,3 +61,8 @@
 .error-close-btn:hover {
 	cursor: pointer;
 }
+
+.profile-dropdown {
+	left: auto;
+	right: 0;
+}

@@ -48,8 +48,15 @@
 						<li class="nav-item <?= ( $pageName == 'friends' ? 'active' : '' ) ?>">
 							<a class="nav-link" href="<?= base_url('friends') ?>">Friends</a>
 						</li>
-						<li class="nav-item <?= ( $pageName == 'profile' ? 'active' : '' ) ?>">
-							<a class="nav-link" href="<?= base_url('profile') ?>">My Profile</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Profile
+							</a>
+							<div class="dropdown-menu profile-dropdown" aria-labelledby="profileDropdown">
+								<a class="dropdown-item" href="<?= base_url('profile') ?>">My profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a>
+							</div>
 						</li>
 					</ul>
 				</div>
